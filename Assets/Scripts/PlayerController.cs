@@ -29,26 +29,26 @@ public class PlayerController : MonoBehaviour
             movement =new Vector2(horizontal, 0);
             if(horizontal == -1) {
                 
-                ChangeAnimation("walk_left");
+                currentAnimation = Characters.ChangeAnimation(currentAnimation,"walk_left", animator);
                 setIdle = "idle_left";
             }
             else{
-                ChangeAnimation("walk_right");
+                currentAnimation = Characters.ChangeAnimation(currentAnimation,"walk_right", animator);
                 setIdle = "idle_right";
             }
         }
         else{
             movement =new Vector2(0, vertical);
             if(vertical == -1){ 
-                ChangeAnimation("walk_down");
+                currentAnimation = Characters.ChangeAnimation(currentAnimation,"walk_down", animator);
                 setIdle = "idle_down";
             }
             else if(vertical == 1){
-                ChangeAnimation("walk_up");
+                currentAnimation = Characters.ChangeAnimation(currentAnimation,"walk_up", animator);
                 setIdle = "idle_up";
             }
             else{
-                ChangeAnimation(setIdle);
+                currentAnimation = Characters.ChangeAnimation(currentAnimation, setIdle, animator);
             }
         }
 
@@ -57,11 +57,5 @@ public class PlayerController : MonoBehaviour
     {
         body.linearVelocity = movement * runSpeed;
     }
-    void ChangeAnimation(string animation){
-        if(animation == currentAnimation){
-            return;
-        }
-        currentAnimation = animation;
-        animator.CrossFade(animation, 0.2f);
-    }
+
 }
