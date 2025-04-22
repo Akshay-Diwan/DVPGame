@@ -31,10 +31,10 @@ namespace Pathfinding {
 		static bool hasParsedServerMessage;
 
 		/// <summary>Number of days between update checks</summary>
-		const double updateCheckRate = 1F;
+		const double updateCheckRate = 100F;
 
 		/// <summary>URL to the version file containing the latest version number.</summary>
-		const string updateURL = "http://www.arongranberg.com/astar/version.php";
+		const string updateURL = "https://www.arongranberg.com/astar/version.php";
 
 		/// <summary>Last time an update check was made</summary>
 		public static System.DateTime lastUpdateCheck {
