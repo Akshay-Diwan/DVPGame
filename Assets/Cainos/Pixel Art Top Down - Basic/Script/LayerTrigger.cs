@@ -23,7 +23,7 @@ namespace Cainos.PixelArtTopDown_Basic
             Debug.Log(transform.parent.name);
             string VisualLayer = other.gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
             int PhysicsLayer = other.gameObject.layer;
-            foreach ( SpriteRenderer sr in srs)
+            foreach ( SpriteRenderer sr in srs) 
             {
                 sr.sortingLayerName = sortingLayer;
             }
