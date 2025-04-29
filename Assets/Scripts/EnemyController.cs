@@ -6,13 +6,15 @@ public class EnemyController : MonoBehaviour
         // public Transform player;
         // public float moveSpeed = 2f;
         private Rigidbody2D rb;
-        private Animator animator;
-        private string currentAnimation = "walk_down";
+        public int health = 50; 
+        
+        public bool isAttacking = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Debug.Log(gameObject.transform.position);
+
     }
 
     // Update is called once per frame
