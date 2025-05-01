@@ -13,12 +13,12 @@ public class EnemyWeaponController: MonoBehaviour
         }
         else{
             isAttacking = gameObject.transform.root.gameObject.GetComponent<EnemyController>().isAttacking;
-            Debug.Log("Enemy Weapon: " + isAttacking);
+            // Debug.Log("Enemy Weapon: " + isAttacking);
 
         }
-        Debug.Log(isAttacking);
+        // Debug.Log(isAttacking);
         if((gameObject.tag == "Enemy Weapon" && other.gameObject.tag == "Player") || (gameObject.tag == "Player Weapon" && other.gameObject.tag == "Enemy"  ) && isAttacking){
-            Debug.Log(gameObject.tag + " Attacked");
+            // Debug.Log(gameObject.tag + " Attacked");
             if(gameObject.tag == "Enemy Weapon") other.gameObject.GetComponent<PlayerController>().health -= attack;
             else other.gameObject.GetComponent<EnemyController>().health -= attack;
         }

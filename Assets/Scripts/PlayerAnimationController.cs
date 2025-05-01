@@ -25,11 +25,12 @@ public class PlayerAnimationController: MonoBehaviour
             animator.SetTrigger("4_Death");
             animator.SetBool("isDeath", true);
             animator.SetBool("1_Move", false);
+            gameObject.transform.root.gameObject.GetComponent<PlayerController>().health = -1;
         }
         else if(health > 0){
             // check if damaged
             if(health < ogHealth){
-                Debug.Log("Ye chal raha hai");
+                Debug.Log(health);
                 animator.SetTrigger("3_Damaged");
             }
         // attack animation

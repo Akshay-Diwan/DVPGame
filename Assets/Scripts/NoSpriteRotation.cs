@@ -15,7 +15,7 @@ public class NoSpriteRotation : MonoBehaviour
         aipath = gameObject.transform.root.gameObject.GetComponent<AIPath>();
         animator = GetComponent<Animator>();
         scale = gameObject.transform.localScale;
-       
+       target = GameObject.Find("PlayerUp").transform;
     }
 
     async Task Update()
@@ -30,6 +30,7 @@ public class NoSpriteRotation : MonoBehaviour
             animator.SetBool("isDeath", true);
             animator.SetBool("1_Move", false);
             aipath.enabled = false;
+            gameObject.transform.root.gameObject.GetComponent<EnemyController>().health = -1;
         }
         else if(health > 0){
         

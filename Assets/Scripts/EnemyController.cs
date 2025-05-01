@@ -1,4 +1,5 @@
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,17 +10,23 @@ public class EnemyController : MonoBehaviour
         public int health = 50; 
         
         public bool isAttacking = false;
+        AIDestinationSetter setter;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         Debug.Log(gameObject.transform.position);
+        setter = gameObject.GetComponent<AIDestinationSetter>();
+        setter.target = GameObject.Find("PlayerUp").transform;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0){
+            Destroy(gameObject, 2f);
+        }
     //     if(player == null) return;
     //     Vector2 playerPosition = player.position;
     //     Vector2 direction = ((Vector2)player.position - rb.position).normalized;

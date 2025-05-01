@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D body;
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public int health = 100;
     public bool isAttacking = false;
+    private Coroutine regehealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,10 +28,13 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if(horizontal != 0){
-            movement =new Vector2(horizontal, 0);
+            movement = new Vector2(horizontal, 0);
         }
         else{
             movement =new Vector2(0, vertical);
+        }
+        if(gameObject.layer == 22){
+            regehealth = StartCoroutine(RegenerateHealth());
         }
 
      
@@ -38,6 +42,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         body.linearVelocity = movement * runSpeed;
+    }
+
+   IEnumerator RegenerateHealth(){
+        while(true){
+            // Debug.Log("Before 2 sec");
+            yield return new WaitForSeconds(2f);
+                if(health < 100 && health > 0 && gameObject.layer == 22){
+                    health = Mathf.Min(health + 10, 100);
+                    Debug.Log("Healing: " + health);
+            }
+        }
+     
     }
 
 }
